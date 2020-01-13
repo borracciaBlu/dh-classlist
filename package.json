@@ -1,0 +1,28 @@
+{
+  "name": "@borracciablu/dh-classlist",
+  "version": "0.0.0",
+  "description": "Helpers functions to manipulate the DOM element css classes.",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/borracciaBlu/dh-classlist.git"
+  },
+  "keywords": [
+    "utility",
+    "dom",
+    "classList"
+  ],
+  "author": "Marco Buttini",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/borracciaBlu/dh-classlist/issues"
+  },
+  "homepage": "https://github.com/borracciaBlu/dh-classlist#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0"
+  }
+}
