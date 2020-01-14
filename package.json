@@ -16,6 +16,9 @@
     "dom",
     "classList"
   ],
+  "files": [
+    "index.js"
+  ],
   "author": "Marco Buttini",
   "license": "BSD-3-Clause",
   "bugs": {
