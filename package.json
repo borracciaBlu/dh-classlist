@@ -2,9 +2,9 @@
   "name": "@borracciablu/dh-classlist",
   "version": "0.0.0",
   "description": "Helpers functions to manipulate the DOM element css classes.",
-  "type": "module",
   "main": "index.js",
   "scripts": {
+    "test": "browserify test.js | tape-run",
     "lint": "eslint index.js"
   },
   "repository": {
@@ -23,6 +23,9 @@
   },
   "homepage": "https://github.com/borracciaBlu/dh-classlist#readme",
   "devDependencies": {
-    "eslint": "^6.8.0"
+    "browserify": "^16.5.0",
+    "eslint": "^6.8.0",
+    "tape": "^4.13.0",
+    "tape-run": "^6.0.1"
   }
 }

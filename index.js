@@ -8,7 +8,7 @@
  * @param NodeList | Node itmList
  * @param {}[] | {} opList - Possibles values {'add': 'clsName'}, {remove: 'd-none'}, {toggle: 'd-none'}
  */
-export function execClass(itmList, opList) {
+function execClass(itmList, opList) {
 	itmList = (itmList.length instanceof NodeList || Array.isArray(itmList))
 		? itmList
 		: new Array(itmList);
@@ -71,7 +71,7 @@ function generateClassListFn(classListAction) {
  * @param NodeList | Node itmList
  * @param String[] | String clsList
  */
-export function addClass(itmList, clsList) {
+function addClass(itmList, clsList) {
 	return generateClassListFn('add')(itmList, clsList);
 }
 
@@ -86,7 +86,7 @@ export function addClass(itmList, clsList) {
  * @param NodeList | Node itmList
  * @param String[] | String clsList
  */
-export function removeClass(itmList, clsList) {
+function removeClass(itmList, clsList) {
 	return generateClassListFn('remove')(itmList, clsList);
 }
 
@@ -101,7 +101,11 @@ export function removeClass(itmList, clsList) {
  * @param NodeList | Node itmList
  * @param String[] | String clsList
  */
-export function toggleClass(itmList, clsList) {
+function toggleClass(itmList, clsList) {
 	return generateClassListFn('toggle')(itmList, clsList);
 }
 
+module.exports.addClass = addClass;
+module.exports.removeClass = removeClass;
+module.exports.toggleClass = toggleClass;
+module.exports.execClass = execClass;
