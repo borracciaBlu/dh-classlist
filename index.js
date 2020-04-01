@@ -1,3 +1,15 @@
+function getArray(itmList) {
+    return Array.isArray(itmList)
+        ? itmList
+        : new Array(itmList);
+}
+
+function getArrayLike(itmList) {
+    return (itmList instanceof NodeList || Array.isArray(itmList))
+        ? itmList
+        : new Array(itmList);
+}
+
 /**
  * Use DSL array to act on class list
  *
@@ -6,27 +18,22 @@
  * execClass(docList, [{'add': 'd-block'}, {remove: 'd-none'}])
  *
  * @param NodeList | Node itmList
- * @param {}[] | {} opList - Possibles values {'add': 'clsName'}, {remove: 'd-none'}, {toggle: 'd-none'}
+ * @param {}[] | {} optList - Possibles values {'add': 'clsName'}, {remove: 'd-none'}, {toggle: 'd-none'}
  */
-function execClass(itmList, opList) {
-	itmList = (itmList.length instanceof NodeList || Array.isArray(itmList))
-		? itmList
-		: new Array(itmList);
+function execClass(itmList, optList) {
+    itmList = getArrayLike(itmList);
+    optList = getArray(optList);
 
-	opList = (Array.isArray(opList))
-		? opList
-		: new Array(opList);
-
-	for (var i = itmList.length - 1; i >= 0; i--) {
-		for (var a = opList.length - 1; a >= 0; a--) {
-			for (var key in opList[a]) {
-				itmList[i] &&
-				itmList[i].classList &&
-				itmList[i].classList[key] &&
-				itmList[i].classList[key](opList[a][key]);
-			}
-		}
-	}
+    for (var i = itmList.length - 1; i >= 0; i--) {
+        for (var a = optList.length - 1; a >= 0; a--) {
+            for (var key in optList[a]) {
+                itmList[i] &&
+                itmList[i].classList &&
+                itmList[i].classList[key] &&
+                itmList[i].classList[key](optList[a][key]);
+            }
+        }
+    }
 }
 
 /**
@@ -41,23 +48,18 @@ function execClass(itmList, opList) {
  * @return Function
  */
 function generateClassListFn(classListAction) {
-	return function (itmList, opList) {
-		itmList = (itmList instanceof NodeList || Array.isArray(itmList))
-			? itmList
-			: new Array(itmList);
+    return function (itmList, optList) {
+        itmList = getArrayLike(itmList);
+        optList = getArray(optList);
 
-		opList = (Array.isArray(opList))
-			? opList
-			: new Array(opList);
-
-		for (var i = itmList.length - 1; i >= 0; i--) {
-			for (var a = opList.length - 1; a >= 0; a--) {
-				itmList[i] &&
-				itmList[i].classList &&
-				itmList[i].classList[classListAction](opList[a]);
-			}
-		}
-	};
+        for (var i = itmList.length - 1; i >= 0; i--) {
+            for (var a = optList.length - 1; a >= 0; a--) {
+                itmList[i] &&
+                itmList[i].classList &&
+                itmList[i].classList[classListAction](optList[a]);
+            }
+        }
+    };
 }
 
 /**
@@ -71,9 +73,7 @@ function generateClassListFn(classListAction) {
  * @param NodeList | Node itmList
  * @param String[] | String clsList
  */
-function addClass(itmList, clsList) {
-	return generateClassListFn('add')(itmList, clsList);
-}
+var addClass = generateClassListFn('add');
 
 /**
  * Remove a css class to a Node
@@ -86,9 +86,7 @@ function addClass(itmList, clsList) {
  * @param NodeList | Node itmList
  * @param String[] | String clsList
  */
-function removeClass(itmList, clsList) {
-	return generateClassListFn('remove')(itmList, clsList);
-}
+var removeClass = generateClassListFn('remove');
 
 /**
  * Toggle a css class to a Node
@@ -101,9 +99,7 @@ function removeClass(itmList, clsList) {
  * @param NodeList | Node itmList
  * @param String[] | String clsList
  */
-function toggleClass(itmList, clsList) {
-	return generateClassListFn('toggle')(itmList, clsList);
-}
+var toggleClass = generateClassListFn('toggle');
 
 module.exports.addClass = addClass;
 module.exports.removeClass = removeClass;
