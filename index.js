@@ -10,6 +10,13 @@ function getArrayLike(itmList) {
         : new Array(itmList);
 }
 
+function classListAction(action, itm, option) {
+    itm &&
+    itm.classList &&
+    itm.classList[action] &&
+    itm.classList[action](option);
+}
+
 /**
  * Use DSL array to act on class list
  *
@@ -26,11 +33,8 @@ function execClass(itmList, optList) {
 
     for (var i = itmList.length - 1; i >= 0; i--) {
         for (var a = optList.length - 1; a >= 0; a--) {
-            for (var key in optList[a]) {
-                itmList[i] &&
-                itmList[i].classList &&
-                itmList[i].classList[key] &&
-                itmList[i].classList[key](optList[a][key]);
+            for (var action in optList[a]) {
+                classListAction(action, itmList[i], optList[a][action]);
             }
         }
     }
@@ -44,19 +48,17 @@ function execClass(itmList, optList) {
  * var cls = ['d-none']
  * generateClassListFn('add')(itmList, clsList);
  *
- * @param String classListAction
+ * @param String action
  * @return Function
  */
-function generateClassListFn(classListAction) {
+function generateClassListFn(action) {
     return function (itmList, optList) {
         itmList = getArrayLike(itmList);
         optList = getArray(optList);
 
         for (var i = itmList.length - 1; i >= 0; i--) {
             for (var a = optList.length - 1; a >= 0; a--) {
-                itmList[i] &&
-                itmList[i].classList &&
-                itmList[i].classList[classListAction](optList[a]);
+                classListAction(action, itmList[i], optList[a]);
             }
         }
     };
