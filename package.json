@@ -6,6 +6,7 @@
   "types": "index.d.ts",
   "scripts": {
     "test": "browserify test.js | tape-run",
+    "coverage": "npx nyc --reporter=html --reporter=text tape coverage.js | npx tap-nyc",
     "lint": "eslint index.js"
   },
   "repository": {
