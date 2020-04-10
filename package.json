@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "description": "Helpers functions to manipulate the DOM element css classes.",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "test": "browserify test.js | tape-run",
     "lint": "eslint index.js"
@@ -17,7 +18,8 @@
     "classList"
   ],
   "files": [
-    "index.js"
+    "index.js",
+    "index.d.ts"
   ],
   "author": "Marco Buttini",
   "license": "BSD-3-Clause",
