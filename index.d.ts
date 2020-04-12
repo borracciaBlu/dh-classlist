@@ -1,10 +1,10 @@
 type ActionOption = {
-    add?: String,
-    remove?: String,
-    toggle?: String
+    add?: string,
+    remove?: string,
+    toggle?: string
 };
 type NodeListLike = NodeList | Node[] | Node | EventTarget;
-type OptionList = String | String[];
+type OptionList = string | string[];
 
 export declare function addClass(itmList: NodeListLike, optList: OptionList) : void;
 
