@@ -3,6 +3,7 @@
 [![dependencies Status](https://david-dm.org/borracciaBlu/dh-classlist/status.svg)](https://david-dm.org/borracciaBlu/dh-classlist)
 [![devDependencies Status](https://david-dm.org/borracciaBlu/dh-classlist/dev-status.svg)](https://david-dm.org/borracciaBlu/dh-classlist?type=dev)
 [![npm version](https://badge.fury.io/js/%40borracciablu%2Fdh-classlist.svg)](https://badge.fury.io/js/%40borracciablu%2Fdh-classlist)
+[![Coverage Status](https://coveralls.io/repos/github/borracciaBlu/dh-classlist/badge.svg?branch=master)](https://coveralls.io/github/borracciaBlu/dh-classlist?branch=master)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)  
 Helpers functions to manipulate the DOM element css classes.
 

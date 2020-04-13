@@ -6,6 +6,7 @@
   "types": "index.d.ts",
   "scripts": {
     "test": "browserify test.js | tape-run",
+    "coverage": "nyc --reporter=text-lcov tape test.js | coveralls",
     "lint": "eslint index.js"
   },
   "repository": {
@@ -29,7 +30,9 @@
   "homepage": "https://github.com/borracciaBlu/dh-classlist#readme",
   "devDependencies": {
     "browserify": "^16.5.1",
+    "coveralls": "^3.0.11",
     "eslint": "^6.8.0",
+    "nyc": "^15.0.1",
     "tape": "^4.13.2",
     "tape-run": "^7.0.0"
   }
