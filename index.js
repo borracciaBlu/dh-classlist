@@ -28,15 +28,9 @@ function classListAction(action, itm, option) {
  * @param {}[] | {} optList - Possibles values {'add': 'clsName'}, {remove: 'd-none'}, {toggle: 'd-none'}
  */
 function execClass(itmList, optList) {
-    itmList = getArrayLike(itmList);
-    optList = getArray(optList);
-
-    for (var i = itmList.length - 1; i >= 0; i--) {
-        for (var a = optList.length - 1; a >= 0; a--) {
-            for (var action in optList[a]) {
-                classListAction(action, itmList[i], optList[a][action]);
-            }
-        }
+    for (var a = optList.length - 1; a >= 0; a--) {
+        var action = Object.keys(optList[a])[0];
+        generateClassListFn(action)(itmList, optList[a][action]);
     }
 }
 
@@ -52,7 +46,7 @@ function execClass(itmList, optList) {
  * @return Function
  */
 function generateClassListFn(action) {
-    return function (itmList, optList) {
+    return function(itmList, optList) {
         itmList = getArrayLike(itmList);
         optList = getArray(optList);
 
@@ -61,6 +55,16 @@ function generateClassListFn(action) {
                 classListAction(action, itmList[i], optList[a]);
             }
         }
+    };
+}
+
+function generateThunkClassListFn(action) {
+    return function(itmList, optList) {
+        return function() {
+            (action !== 'exec')
+                ? generateClassListFn(action)(itmList, optList)
+                : execClass(itmList, optList);
+        };
     };
 }
 
@@ -103,7 +107,19 @@ var removeClass = generateClassListFn('remove');
  */
 var toggleClass = generateClassListFn('toggle');
 
+var addClassThunk = generateThunkClassListFn('add');
+var removeClassThunk = generateThunkClassListFn('remove');
+var toggleClassThunk = generateThunkClassListFn('toggle');
+var execClassThunk = generateThunkClassListFn('exec');
+
 module.exports.addClass = addClass;
 module.exports.removeClass = removeClass;
 module.exports.toggleClass = toggleClass;
 module.exports.execClass = execClass;
+
+module.exports.addClassThunk = addClassThunk;
+module.exports.removeClassThunk = removeClassThunk;
+module.exports.toggleClassThunk = toggleClassThunk;
+module.exports.execClassThunk = execClassThunk;
+
+
