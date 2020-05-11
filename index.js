@@ -58,6 +58,17 @@ function generateClassListFn(action) {
     };
 }
 
+/**
+ * Generate a thunk to manipulate classList
+ *
+ * @example
+ * var itm = document.querySelectorAll('.btn');
+ * var cls = ['d-none']
+ * generateThunkClassListFn('add')(itmList, clsList)();
+ *
+ * @param String action
+ * @return Function
+ */
 function generateThunkClassListFn(action) {
     return function(itmList, optList) {
         return function() {
@@ -107,9 +118,63 @@ var removeClass = generateClassListFn('remove');
  */
 var toggleClass = generateClassListFn('toggle');
 
+/**
+ * Thunk to add a css class to a Node
+ *
+ * @example
+ * var itm = document.querySelectorAll('.btn');
+ * var cls = ['d-none']
+ * var thunk = addClassThunk(itm, cls);
+ * setTimeout(thunk, 3000);
+ *
+ * @param NodeList | Node itmList
+ * @param String[] | String clsList
+ * @return Function
+ */
 var addClassThunk = generateThunkClassListFn('add');
+
+/**
+ * Thunk to remove a css class to a Node
+ *
+ * @example
+ * var itm = document.querySelectorAll('.btn');
+ * var cls = ['d-none']
+ * var thunk = removeClassThunk(itm, cls);
+ * setTimeout(thunk, 3000);
+ *
+ * @param NodeList | Node itmList
+ * @param String[] | String clsList
+ * @return Function
+ */
 var removeClassThunk = generateThunkClassListFn('remove');
+
+/**
+ * Thunk to toggle a css class to a Node
+ *
+ * @example
+ * var itm = document.querySelectorAll('.btn');
+ * var cls = ['d-none']
+ * var thunk = addToggleThunk(itm, cls);
+ * setTimeout(thunk, 3000);
+ *
+ * @param NodeList | Node itmList
+ * @param String[] | String clsList
+ * @return Function
+ */
 var toggleClassThunk = generateThunkClassListFn('toggle');
+
+/**
+ * Thunk to use DSL array to act on class list
+ *
+ * @example
+ * var docList = document.querySelectorAll('.doc');
+ * var thunk = execClass(docList, [{'add': 'd-block'}, {remove: 'd-none'}])
+ * setTimeout(thunk, 3000);
+ *
+ * @param NodeList | Node itmList
+ * @param {}[] | {} optList - Possibles values {'add': 'clsName'}, {remove: 'd-none'}, {toggle: 'd-none'}
+ * @return Function
+ */
 var execClassThunk = generateThunkClassListFn('exec');
 
 module.exports.addClass = addClass;
