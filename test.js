@@ -1,7 +1,16 @@
 'use strict';
 
 var test = require('tape');
-var {addClass, removeClass, toggleClass, execClass} = require('./');
+var {
+    addClass,
+    removeClass,
+    toggleClass,
+    execClass,
+    addClassThunk,
+    removeClassThunk,
+    toggleClassThunk,
+    execClassThunk
+} = require('./');
 
 var testNode = typeof document !== 'undefined' && document.body;
 
@@ -10,29 +19,25 @@ if (! testNode) {
     global.NodeList = NodeList;
 
     var testNode = (function() {
-        function containsFn(value) {
-            return (o.classes.indexOf(value) > -1);
-        }
-
-        function addFn(value) {
-            ! containsFn(value) &&o.classes.push(value);
-        }
-
-        function removeFn(value) {
-            containsFn(value) && o.classes.splice(o.classes.indexOf(value), 1);
-        }
-
-        function toggleFn(value) {
-            containsFn(value) && removeFn(value) || addFn(value);
-        }
 
         var o = {};
         o.classes = [];
-        o.classList = {
-            add: addFn,
-            remove: removeFn,
-            toggle: toggleFn,
-            contains: containsFn
+        o.classList = {};
+
+        o.classList.add = function (value) {
+            ! o.classList.contains(value) && o.classes.push(value);
+        };
+
+        o.classList.remove = function (value) {
+            o.classList.contains(value) && o.classes.splice(o.classes.indexOf(value), 1);
+        };
+
+        o.classList.toggle = function (value) {
+            o.classList.contains(value) && o.classList.remove(value) || o.classList.add(value);
+        };
+
+        o.classList.contains = function (value) {
+            return (o.classes.indexOf(value) > -1);
         };
 
         return o;
@@ -63,8 +68,35 @@ test('add class', function (t) {
     t.end();
 });
 
-test('remove class', function (t) {
+test('add class thunk', function (t) {
+    var addThunk1 = addClassThunk(testNode, 'css-class-1-thunk');
+    t.equal(testNode.classList.contains('css-class-1-thunk'), false);
+    addThunk1();
+    t.equal(testNode.classList.contains('css-class-1-thunk'), true);
 
+    var addThunk2 = addClassThunk([testNode], 'css-class-2-thunk');
+    t.equal(testNode.classList.contains('css-class-2-thunk'), false);
+    addThunk2();
+    t.equal(testNode.classList.contains('css-class-2-thunk'), true);
+
+
+    var addThunk3 = addClassThunk(testNode, ['css-class-3-thunk']);
+    t.equal(testNode.classList.contains('css-class-3-thunk'), false);
+    addThunk3();
+    t.equal(testNode.classList.contains('css-class-3-thunk'), true);
+
+
+    var addThunk4 = addClassThunk([testNode], ['css-class-4-thunk']);
+    t.equal(testNode.classList.contains('css-class-4-thunk'), false);
+    addThunk4();
+    t.equal(testNode.classList.contains('css-class-4-thunk'), true);
+
+    addClassThunk([testNode], ['css-class-5-thunk'])();
+
+    t.end();
+});
+
+test('remove class', function (t) {
     t.equal(testNode.classList.contains('css-class-1'), true);
     removeClass(testNode, 'css-class-1');
     t.equal(testNode.classList.contains('css-class-1'), false);
