@@ -21,8 +21,8 @@ var {addClass, removeClass, toggleClass, execClass} = require('@borracciablu/dh-
 ### execClass(itmList, opList) 
 
 ```
- var docList = document.querySelectorAll('.doc');
- execClass(docList, [{'add': 'd-block'}, {remove: 'd-none'}]);
+var docList = document.querySelectorAll('.doc');
+execClass(docList, [{'add': 'd-block'}, {remove: 'd-none'}]);
 ```
 
 ### addClass(itmList, clsList)
@@ -44,4 +44,36 @@ removeClass(itm, cls);
 var itm = document.querySelectorAll('.btn');
 var cls = ['d-none'];
 toggleClass(itm, cls);
+```
+
+### execClassThunk(itmList, opList) 
+
+```
+var docList = document.querySelectorAll('.doc');
+var thunk = execClassThunk(docList, [{'add': 'd-block'}, {remove: 'd-none'}]);
+setTimeout(thunk, 3000);
+```
+
+### addClassThunk(itmList, clsList)
+```
+var itm = document.querySelectorAll('.btn');
+var cls = ['d-none'];
+var thunk = addClassThunk(itm, cls);
+setTimeout(thunk, 3000);
+ ```
+
+### removeClassThunk(itmList, clsList)
+```
+var itm = document.querySelectorAll('.btn');
+var cls = ['d-none'];
+var thunk = removeClassThunk(itm, cls);
+setTimeout(thunk, 3000);
+ ```
+
+### toggleClassThunk(itmList, clsList)
+```
+var itm = document.querySelectorAll('.btn');
+var cls = ['d-none'];
+var thunk = toggleClass(itm, cls);
+setTimeout(thunk, 3000);
 ```
