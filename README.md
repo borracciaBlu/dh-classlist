@@ -77,3 +77,12 @@ var cls = ['d-none'];
 var thunk = toggleClass(itm, cls);
 setTimeout(thunk, 3000);
 ```
+
+## CDN
+Recommended CDN:
+
+https://unpkg.com/@borracciablu/dh-classlist@latest/dist/dh-classlist.min.js
+
+```
+var {addClass} = window.dhClasslist;
+```
