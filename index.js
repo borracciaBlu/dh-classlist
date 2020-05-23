@@ -1,3 +1,5 @@
+'use strict';
+
 function getArray(itmList) {
     return Array.isArray(itmList)
         ? itmList
@@ -186,5 +188,4 @@ module.exports.addClassThunk = addClassThunk;
 module.exports.removeClassThunk = removeClassThunk;
 module.exports.toggleClassThunk = toggleClassThunk;
 module.exports.execClassThunk = execClassThunk;
-
 
