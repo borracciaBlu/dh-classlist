@@ -1,16 +1,14 @@
 language: node_js
-node_js:
-  - node
-  - 8
+matrix:
+  fast_finish: true
+  include:
+    - node_js: "14"
+      env: SCRIPT=test
+    - node_js: "12"
+      env: SCRIPT=test
+    - node_js: "10"
+      env: SCRIPT=test
 script:
-  - npm test
+  - "npm run ${SCRIPT}"
 after_success:
-  - npm run coverage
-addons:
-  apt:
-    packages:
-      - xvfb
-install:
-  - export DISPLAY=':99.0'
-  - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
-  - npm install
+  - 'if [ "${SCRIPT}" == "test" ]; then npm i coveralls@3 && nyc report --reporter=text-lcov | coveralls; fi'
