@@ -1,22 +1,21 @@
 describe('dh-classlist', function tests() {
-    'use strict';
+    var dh = require('../');
 
-    var {
-        addClass,
-        removeClass,
-        toggleClass,
-        execClass,
-        addClassThunk,
-        removeClassThunk,
-        toggleClassThunk,
-        execClassThunk
-    } = require('../');
+    var addClass = dh.addClass;
+    var removeClass = dh.removeClass;
+    var toggleClass = dh.toggleClass;
+    var execClass = dh.execClass;
+    var addClassThunk = dh.addClassThunk;
+    var removeClassThunk = dh.removeClassThunk;
+    var toggleClassThunk = dh.toggleClassThunk;
+    var execClassThunk = dh.execClassThunk;
+
     var assert = require('assert');
 
     var testNode = typeof document !== 'undefined' && document.body;
 
     if (! testNode) {
-        class NodeList {}
+        function NodeList() {};
         global.NodeList = NodeList;
 
         var testNode = (function() {

@@ -8,6 +8,8 @@ matrix:
       env: SCRIPT=test
     - node_js: "10"
       env: SCRIPT=test
+    - node_js: "12"
+      env: SCRIPT=test-browser
 script:
   - "npm run ${SCRIPT}"
 after_success:

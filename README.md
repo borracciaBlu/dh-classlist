@@ -7,6 +7,7 @@
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)  
 Helpers functions to manipulate the DOM element css classes.
 
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/borracciaBlu.svg)](https://saucelabs.com/u/borracciaBlu)
 ## Installing
 
 `npm install @borracciablu/dh-classlist`
