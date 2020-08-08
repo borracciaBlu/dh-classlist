@@ -34,12 +34,12 @@
   "homepage": "https://github.com/borracciaBlu/dh-classlist#readme",
   "devDependencies": {
     "assert": "^2.0.0",
-    "browserify": "^16.5.1",
+    "browserify": "^16.5.2",
     "eslint": "^7.6.0",
-    "mocha": "^8.1.0",
+    "mocha": "^8.1.1",
     "nyc": "^15.1.0",
     "sauce-browsers": "^2.0.0",
     "sauce-test": "^1.3.3",
-    "uglify-js": "^3.10.0"
+    "uglify-js": "^3.10.1"
   }
 }
