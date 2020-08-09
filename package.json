@@ -10,7 +10,8 @@
     "lint": "eslint index.js",
     "browserify": "rm -rf dist && mkdir dist && browserify index.js --standalone dhClasslist -o dist/dh-classlist.js",
     "minify": "uglifyjs dist/dh-classlist.js --source-map -cm -o dist/dh-classlist.min.js",
-    "prepublishOnly": "npm run browserify && npm run minify"
+    "banner": "banner-cli dist/*.js && banner-cli dist/*.min.js",
+    "prepublishOnly": "npm run browserify && npm run minify && npm run banner"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,7 @@
   "homepage": "https://github.com/borracciaBlu/dh-classlist#readme",
   "devDependencies": {
     "assert": "^2.0.0",
+    "banner-cli": "^0.14.3",
     "browserify": "^16.5.2",
     "eslint": "^7.6.0",
     "mocha": "^8.1.1",
