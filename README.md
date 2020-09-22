@@ -86,4 +86,7 @@ https://unpkg.com/@borracciablu/dh-classlist@latest/dist/dh-classlist.min.js
 
 ```js
 var {addClass} = window.dhClasslist;
+
+// Alternative syntax
+var addClass = window.dhClasslist.addClass;
 ```
