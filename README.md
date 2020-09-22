@@ -12,7 +12,7 @@ Helpers functions to manipulate the DOM element css classes.
 
 `npm install @borracciablu/dh-classlist`
 
-```
+```js
 import {execClass} from '@borracciablu/dh-classlist';
 var {addClass, removeClass, toggleClass, execClass} = require('@borracciablu/dh-classlist');
 ```
@@ -21,27 +21,27 @@ var {addClass, removeClass, toggleClass, execClass} = require('@borracciablu/dh-
 
 ### execClass(itmList, opList) 
 
-```
+```js
 var docList = document.querySelectorAll('.doc');
 execClass(docList, [{'add': 'd-block'}, {remove: 'd-none'}]);
 ```
 
 ### addClass(itmList, clsList)
-```
+```js
 var itm = document.querySelectorAll('.btn');
 var cls = ['d-none'];
 addClass(itm, cls);
  ```
 
 ### removeClass(itmList, clsList)
-```
+```js
 var itm = document.querySelectorAll('.btn');
 var cls = ['d-none'];
 removeClass(itm, cls);
  ```
 
 ### toggleClass(itmList, clsList)
-```
+```js
 var itm = document.querySelectorAll('.btn');
 var cls = ['d-none'];
 toggleClass(itm, cls);
@@ -49,14 +49,14 @@ toggleClass(itm, cls);
 
 ### execClassThunk(itmList, opList) 
 
-```
+```js
 var docList = document.querySelectorAll('.doc');
 var thunk = execClassThunk(docList, [{'add': 'd-block'}, {remove: 'd-none'}]);
 setTimeout(thunk, 3000);
 ```
 
 ### addClassThunk(itmList, clsList)
-```
+```js
 var itm = document.querySelectorAll('.btn');
 var cls = ['d-none'];
 var thunk = addClassThunk(itm, cls);
@@ -64,7 +64,7 @@ setTimeout(thunk, 3000);
  ```
 
 ### removeClassThunk(itmList, clsList)
-```
+```js
 var itm = document.querySelectorAll('.btn');
 var cls = ['d-none'];
 var thunk = removeClassThunk(itm, cls);
@@ -72,7 +72,7 @@ setTimeout(thunk, 3000);
  ```
 
 ### toggleClassThunk(itmList, clsList)
-```
+```js
 var itm = document.querySelectorAll('.btn');
 var cls = ['d-none'];
 var thunk = toggleClass(itm, cls);
@@ -84,6 +84,6 @@ Recommended CDN:
 
 https://unpkg.com/@borracciablu/dh-classlist@latest/dist/dh-classlist.min.js
 
-```
+```js
 var {addClass} = window.dhClasslist;
 ```
