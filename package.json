@@ -36,8 +36,8 @@
   "devDependencies": {
     "assert": "^2.0.0",
     "banner-cli": "^0.14.3",
-    "browserify": "^16.5.2",
-    "eslint": "^7.11.0",
+    "browserify": "^17.0.0",
+    "eslint": "^7.12.0",
     "mocha": "^8.2.0",
     "nyc": "^15.1.0",
     "sauce-browsers": "^2.0.0",
