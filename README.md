@@ -1,5 +1,5 @@
 # dh-classlist
-[![Build Status](https://travis-ci.org/borracciaBlu/dh-classlist.svg?branch=master)](https://travis-ci.org/borracciaBlu/dh-classlist)
+![Build Status](https://github.com/borracciaBlu/dh-classlist/workflows/build-test/badge.svg)
 [![dependencies Status](https://david-dm.org/borracciaBlu/dh-classlist/status.svg)](https://david-dm.org/borracciaBlu/dh-classlist)
 [![devDependencies Status](https://david-dm.org/borracciaBlu/dh-classlist/dev-status.svg)](https://david-dm.org/borracciaBlu/dh-classlist?type=dev)
 [![npm version](https://badge.fury.io/js/%40borracciablu%2Fdh-classlist.svg)](https://badge.fury.io/js/%40borracciablu%2Fdh-classlist)
