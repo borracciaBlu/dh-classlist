@@ -1,15 +1,12 @@
-name: build-test
+name: saucelab-test
 
 on:
-  pull_request:
-    paths-ignore:
-      - '**.md'    
-  push:    
+  push:
     branches:
       - master
     paths-ignore:
       - '**.md'
-      
+
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -26,10 +23,14 @@ jobs:
     name: Node ${{ matrix.node_version }} - ${{ matrix.architecture }} on ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
-      - name: Setup node
+      - name: Setup Node
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node_version }}
           architecture: ${{ matrix.architecture }}
-      - run: npm install
-      - run: npm test
+      - run: npm run saucelab
+        env:
+          SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
+          SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY }}
+        with:
+          github-token: ${{ secrets.github_token }}
