@@ -11,6 +11,7 @@
     "coveralls": "nyc npm test && nyc report --reporter=lcov",
     "saucelab": "wdio wdio.conf.js",
     "test-build": "browserify test/test.js -o test/test-browser.js",
+    "build-gh-pages": "test/gh-test.js",
     "x--------------------BUILD------------------------x": "create - minify - banner",
     "browserify": "rm -rf dist && mkdir dist && browserify index.js --standalone dhClasslist -o dist/dh-classlist.js",
     "minify": "uglifyjs dist/dh-classlist.js --source-map -cm -o dist/dh-classlist.min.js",
