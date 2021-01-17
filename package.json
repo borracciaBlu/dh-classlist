@@ -48,7 +48,7 @@
     "assert": "^2.0.0",
     "banner-cli": "^0.14.3",
     "browserify": "^17.0.0",
-    "eslint": "^7.17.0",
+    "eslint": "^7.18.0",
     "gh-pages": "^3.1.0",
     "mocha": "^8.2.1",
     "nyc": "^15.1.0",
