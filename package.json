@@ -39,7 +39,7 @@
   },
   "homepage": "https://github.com/borracciaBlu/dh-classlist#readme",
   "devDependencies": {
-    "@borracciablu/banner-cli": "^0.0.0",
+    "@borracciablu/banner-cli": "^0.0.1",
     "@wdio/cli": "^7.7.4",
     "@wdio/local-runner": "^7.7.4",
     "@wdio/mocha-framework": "^7.7.4",
