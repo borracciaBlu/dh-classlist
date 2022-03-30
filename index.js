@@ -1,16 +1,17 @@
 'use strict';
 
-function getArray(itmList) {
-    return Array.isArray(itmList)
-        ? itmList
-        : new Array(itmList);
+function getListOrArray(fn) {
+	return function(itmList) {
+	    return fn(itmList) ? itmList : new Array(itmList);
+	}
 }
 
-function getArrayLike(itmList) {
-    return (itmList instanceof NodeList || Array.isArray(itmList))
-        ? itmList
-        : new Array(itmList);
+function isArrayLike(itmList) {
+	return itmList instanceof NodeList || Array.isArray(itmList);
 }
+
+var getArray = getListOrArray(Array.isArray);
+var getArrayLike = getListOrArray(isArrayLike);
 
 function classListAction(action, itm, option) {
     itm &&
