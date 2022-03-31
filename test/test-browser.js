@@ -1,40 +1,24 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 'use strict';
 
-function getArray(itmList) {
-    return Array.isArray(itmList)
-        ? itmList
-        : new Array(itmList);
+function getListOrArray(fn) {
+	return function(itmList) {
+	    return fn(itmList) ? itmList : new Array(itmList);
+	}
 }
 
-function getArrayLike(itmList) {
-    return (itmList instanceof NodeList || Array.isArray(itmList))
-        ? itmList
-        : new Array(itmList);
+function isArrayLike(itmList) {
+	return itmList instanceof NodeList || Array.isArray(itmList);
 }
+
+var getArray = getListOrArray(Array.isArray);
+var getArrayLike = getListOrArray(isArrayLike);
 
 function classListAction(action, itm, option) {
     itm &&
     itm.classList &&
     itm.classList[action] &&
     itm.classList[action](option);
-}
-
-/**
- * Use DSL array to act on class list
- *
- * @example
- * var docList = document.querySelectorAll('.doc');
- * execClass(docList, [{'add': 'd-block'}, {remove: 'd-none'}])
- *
- * @param NodeList | Node itmList
- * @param {}[] | {} optList - Possibles values {'add': 'clsName'}, {remove: 'd-none'}, {toggle: 'd-none'}
- */
-function execClass(itmList, optList) {
-    for (var a = optList.length - 1; a >= 0; a--) {
-        var action = Object.keys(optList[a])[0];
-        generateClassListFn(action)(itmList, optList[a][action]);
-    }
 }
 
 /**
@@ -75,9 +59,7 @@ function generateClassListFn(action) {
 function generateThunkClassListFn(action) {
     return function(itmList, optList) {
         return function() {
-            (action !== 'exec')
-                ? generateClassListFn(action)(itmList, optList)
-                : execClass(itmList, optList);
+            generateClassListFn(action)(itmList, optList);
         };
     };
 }
@@ -166,30 +148,13 @@ var removeClassThunk = generateThunkClassListFn('remove');
  */
 var toggleClassThunk = generateThunkClassListFn('toggle');
 
-/**
- * Thunk to use DSL array to act on class list
- *
- * @example
- * var docList = document.querySelectorAll('.doc');
- * var thunk = execClass(docList, [{'add': 'd-block'}, {remove: 'd-none'}])
- * setTimeout(thunk, 3000);
- *
- * @param NodeList | Node itmList
- * @param {}[] | {} optList - Possibles values {'add': 'clsName'}, {remove: 'd-none'}, {toggle: 'd-none'}
- * @return Function
- */
-var execClassThunk = generateThunkClassListFn('exec');
-
 module.exports.addClass = addClass;
 module.exports.removeClass = removeClass;
 module.exports.toggleClass = toggleClass;
-module.exports.execClass = execClass;
 
 module.exports.addClassThunk = addClassThunk;
 module.exports.removeClassThunk = removeClassThunk;
 module.exports.toggleClassThunk = toggleClassThunk;
-module.exports.execClassThunk = execClassThunk;
-
 
 },{}],2:[function(require,module,exports){
 (function (global){(function (){
@@ -1609,11 +1574,9 @@ describe('dh-classlist', function tests() {
     var addClass = dh.addClass;
     var removeClass = dh.removeClass;
     var toggleClass = dh.toggleClass;
-    var execClass = dh.execClass;
     var addClassThunk = dh.addClassThunk;
     var removeClassThunk = dh.removeClassThunk;
     var toggleClassThunk = dh.toggleClassThunk;
-    var execClassThunk = dh.execClassThunk;
 
     var assert = require('assert');
 
@@ -1756,27 +1719,6 @@ describe('dh-classlist', function tests() {
             thunk();
             assert.equal(testNode.classList.contains('css-class-thunk'), true);
             assert.equal(testNode.classList.contains('css-class-1-thunk'), true);
-        });
-    });
-
-    describe('execClass', function() {
-        it('should exec class', function () {
-            execClass(testNode, [{ add: 'css-class-3'}, { toggle: 'css-class-2'}, { remove: 'css-class-1'}]);
-            assert.equal(testNode.classList.contains('css-class-3'), true);
-            assert.equal(testNode.classList.contains('css-class-2'), true);
-            assert.equal(testNode.classList.contains('css-class-1'), false);
-        });
-
-        it('should exec class thunk', function () {
-            var thunk = execClassThunk(testNode, [{ add: 'css-class-3-thunk'}, { toggle: 'css-class-2-thunk'}, { remove: 'css-class-1-thunk'}]);
-            assert.equal(testNode.classList.contains('css-class-3-thunk'), false);
-            assert.equal(testNode.classList.contains('css-class-2-thunk'), false);
-            assert.equal(testNode.classList.contains('css-class-1-thunk'), true);
-
-            thunk();
-            assert.equal(testNode.classList.contains('css-class-3-thunk'), true);
-            assert.equal(testNode.classList.contains('css-class-2-thunk'), true);
-            assert.equal(testNode.classList.contains('css-class-1-thunk'), false);
         });
     });
 
