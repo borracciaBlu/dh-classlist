@@ -4,11 +4,9 @@ describe('dh-classlist', function tests() {
     var addClass = dh.addClass;
     var removeClass = dh.removeClass;
     var toggleClass = dh.toggleClass;
-    var execClass = dh.execClass;
     var addClassThunk = dh.addClassThunk;
     var removeClassThunk = dh.removeClassThunk;
     var toggleClassThunk = dh.toggleClassThunk;
-    var execClassThunk = dh.execClassThunk;
 
     var assert = require('assert');
 
@@ -151,27 +149,6 @@ describe('dh-classlist', function tests() {
             thunk();
             assert.equal(testNode.classList.contains('css-class-thunk'), true);
             assert.equal(testNode.classList.contains('css-class-1-thunk'), true);
-        });
-    });
-
-    describe('execClass', function() {
-        it('should exec class', function () {
-            execClass(testNode, [{ add: 'css-class-3'}, { toggle: 'css-class-2'}, { remove: 'css-class-1'}]);
-            assert.equal(testNode.classList.contains('css-class-3'), true);
-            assert.equal(testNode.classList.contains('css-class-2'), true);
-            assert.equal(testNode.classList.contains('css-class-1'), false);
-        });
-
-        it('should exec class thunk', function () {
-            var thunk = execClassThunk(testNode, [{ add: 'css-class-3-thunk'}, { toggle: 'css-class-2-thunk'}, { remove: 'css-class-1-thunk'}]);
-            assert.equal(testNode.classList.contains('css-class-3-thunk'), false);
-            assert.equal(testNode.classList.contains('css-class-2-thunk'), false);
-            assert.equal(testNode.classList.contains('css-class-1-thunk'), true);
-
-            thunk();
-            assert.equal(testNode.classList.contains('css-class-3-thunk'), true);
-            assert.equal(testNode.classList.contains('css-class-2-thunk'), true);
-            assert.equal(testNode.classList.contains('css-class-1-thunk'), false);
         });
     });
 

@@ -21,23 +21,6 @@ function classListAction(action, itm, option) {
 }
 
 /**
- * Use DSL array to act on class list
- *
- * @example
- * var docList = document.querySelectorAll('.doc');
- * execClass(docList, [{'add': 'd-block'}, {remove: 'd-none'}])
- *
- * @param NodeList | Node itmList
- * @param {}[] | {} optList - Possibles values {'add': 'clsName'}, {remove: 'd-none'}, {toggle: 'd-none'}
- */
-function execClass(itmList, optList) {
-    for (var a = optList.length - 1; a >= 0; a--) {
-        var action = Object.keys(optList[a])[0];
-        generateClassListFn(action)(itmList, optList[a][action]);
-    }
-}
-
-/**
  * Generate the function to manipulate classList
  *
  * @example
@@ -75,9 +58,7 @@ function generateClassListFn(action) {
 function generateThunkClassListFn(action) {
     return function(itmList, optList) {
         return function() {
-            (action !== 'exec')
-                ? generateClassListFn(action)(itmList, optList)
-                : execClass(itmList, optList);
+            generateClassListFn(action)(itmList, optList);
         };
     };
 }
@@ -166,27 +147,10 @@ var removeClassThunk = generateThunkClassListFn('remove');
  */
 var toggleClassThunk = generateThunkClassListFn('toggle');
 
-/**
- * Thunk to use DSL array to act on class list
- *
- * @example
- * var docList = document.querySelectorAll('.doc');
- * var thunk = execClass(docList, [{'add': 'd-block'}, {remove: 'd-none'}])
- * setTimeout(thunk, 3000);
- *
- * @param NodeList | Node itmList
- * @param {}[] | {} optList - Possibles values {'add': 'clsName'}, {remove: 'd-none'}, {toggle: 'd-none'}
- * @return Function
- */
-var execClassThunk = generateThunkClassListFn('exec');
-
 module.exports.addClass = addClass;
 module.exports.removeClass = removeClass;
 module.exports.toggleClass = toggleClass;
-module.exports.execClass = execClass;
 
 module.exports.addClassThunk = addClassThunk;
 module.exports.removeClassThunk = removeClassThunk;
 module.exports.toggleClassThunk = toggleClassThunk;
-module.exports.execClassThunk = execClassThunk;
-
