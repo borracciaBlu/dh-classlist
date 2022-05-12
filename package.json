@@ -49,7 +49,7 @@
     "assert": "^2.0.0",
     "browserify": "^17.0.0",
     "eslint": "^8.0.0",
-    "gh-pages": "^3.2.3",
+    "gh-pages": "^4.0.0",
     "mocha": "^10.0.0",
     "nyc": "^15.1.0",
     "uglify-js": "^3.12.7"
