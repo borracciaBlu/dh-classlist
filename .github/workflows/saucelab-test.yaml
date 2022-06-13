@@ -28,4 +28,19 @@ jobs:
           architecture: ${{ matrix.architecture }}
       - run: npm install
       - name: Saucelab test
+        id: test
+        continue-on-error: true
         run: env SAUCE_USERNAME="${{ secrets.SAUCE_USERNAME }}" SAUCE_ACCESS_KEY="${{ secrets.SAUCE_ACCESS_KEY }}" npm run saucelab
+      - name: retry
+        continue-on-error: true
+        id: retry1
+        if: steps.test.outcome=='failure'
+        run: env SAUCE_USERNAME="${{ secrets.SAUCE_USERNAME }}" SAUCE_ACCESS_KEY="${{ secrets.SAUCE_ACCESS_KEY }}" npm run saucelab
+      - name: set the status              # set the workflow status if command failed
+        if: always()
+        run: |
+          if ${{ steps.test.outcome=='success' || steps.retry1.outcome=='success' }}; then
+             echo fine
+          else
+             exit 1
+          fi
