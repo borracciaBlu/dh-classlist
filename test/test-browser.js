@@ -2,13 +2,13 @@
 'use strict';
 
 function getListOrArray(fn) {
-	return function(itmList) {
-	    return fn(itmList) ? itmList : new Array(itmList);
-	}
+    return function(itmList) {
+        return fn(itmList) ? itmList : new Array(itmList);
+    };
 }
 
 function isArrayLike(itmList) {
-	return itmList instanceof NodeList || Array.isArray(itmList);
+    return itmList instanceof NodeList || Array.isArray(itmList);
 }
 
 var getArray = getListOrArray(Array.isArray);
