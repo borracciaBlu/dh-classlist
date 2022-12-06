@@ -8,8 +8,7 @@ describe('dh-classlist', () => {
         browser.url(baseUrl);
 
         const failures =  browser.$('.failures');
-        const text =  failures.getText();
-        assert.equal(text, 'failures: 0');
+        failures.getText().then(text => assert.equal(text, 'failures: 0'));
     });
 });
 
