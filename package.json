@@ -45,7 +45,6 @@
     "@wdio/mocha-framework": "^8.0.2",
     "@wdio/sauce-service": "^8.0.2",
     "@wdio/spec-reporter": "^8.0.0",
-    "@wdio/sync": "^7.7.4",
     "assert": "^2.0.0",
     "browserify": "^17.0.0",
     "eslint": "^8.0.0",
