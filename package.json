@@ -1,6 +1,6 @@
 {
   "name": "@borracciablu/dh-classlist",
-  "version": "2.0.76",
+  "version": "2.0.77",
   "description": "Helpers functions to manipulate the DOM element css classes.",
   "main": "index.js",
   "types": "index.d.ts",
