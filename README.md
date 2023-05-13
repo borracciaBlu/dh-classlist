@@ -1,12 +1,25 @@
-# dh-classlist
-[![npm version](https://badge.fury.io/js/%40borracciablu%2Fdh-classlist.svg)](https://badge.fury.io/js/%40borracciablu%2Fdh-classlist)
-[![Coverage Status](https://coveralls.io/repos/github/borracciaBlu/dh-classlist/badge.svg?branch=master)](https://coveralls.io/github/borracciaBlu/dh-classlist?branch=master)
-[![Build Status](https://github.com/borracciaBlu/dh-classlist/workflows/build-test/badge.svg)](https://github.com/borracciaBlu/dh-classlist/actions?query=workflow%3Abuild-test)
-[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+<p align="center">
+  <a href="https://github.com/borracciaBlu/dh-classlist/" target="_blank">
+    <img src="https://user-images.githubusercontent.com/2061731/238107833-da91bee3-822e-4ca4-9fd3-8b52b4454192.svg" width="129px" height="62px" alt="dh-classlist" />
+  </a>
 
-Helpers functions to manipulate the DOM element css classes.
+  <br>
+  <span align="center">
+	Helpers functions to manipulate the DOM element css classes.
+  </span>
+</p>
 
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/borracciaBlu.svg)](https://saucelabs.com/u/borracciaBlu)
+<p dir="auto"  align="center">
+    <a href="https://badge.fury.io/js/%40borracciablu%2Fdh-classlist"><img src="https://badge.fury.io/js/%40borracciablu%2Fdh-classlist.svg" alt="npm version"></a>
+    <a href="https://coveralls.io/github/borracciaBlu/dh-classlist?branch=master"><img src="https://coveralls.io/repos/github/borracciaBlu/dh-classlist/badge.svg?branch=master" alt="Coverage Status"></a>
+    <a href="https://github.com/borracciaBlu/dh-classlist/actions?query=workflow%3Abuild-test"><img src="https://github.com/borracciaBlu/dh-classlist/workflows/build-test/badge.svg" alt="Build Status"></a>
+    <a href="https://github.com/borracciaBlu/dh-classlist/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-BSD%203--Clause-blue.svg" alt="License"></a>
+</p>
+
+<p dir="auto"  align="center">
+	<a href="https://saucelabs.com/u/borracciaBlu"><img src="https://saucelabs.com/browser-matrix/borracciaBlu.svg" alt="Sauce Test Status"></a>
+</p>
+
 ## Installing
 
 `npm install @borracciablu/dh-classlist`
