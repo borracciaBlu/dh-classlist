@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/borracciaBlu/dh-classlist/" target="_blank">
-    <img src="https://user-images.githubusercontent.com/2061731/238107833-da91bee3-822e-4ca4-9fd3-8b52b4454192.svg" width="129px" height="62px" alt="dh-classlist" />
+    <img src="https://user-images.githubusercontent.com/2061731/238107833-da91bee3-822e-4ca4-9fd3-8b52b4454192.svg" width="129px" height="55px" alt="dh-classlist" />
   </a>
 
   <br>
