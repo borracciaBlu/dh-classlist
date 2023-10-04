@@ -1843,11 +1843,14 @@ module.exports = function hasSymbols() {
 },{}],14:[function(require,module,exports){
 'use strict';
 
-var bind = require('function-bind');
+var hasOwnProperty = {}.hasOwnProperty;
+var call = Function.prototype.call;
 
-module.exports = bind.call(Function.call, Object.prototype.hasOwnProperty);
+module.exports = call.bind ? call.bind(hasOwnProperty) : function (O, P) {
+  return call.call(hasOwnProperty, O, P);
+};
 
-},{"function-bind":9}],15:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 'use strict';
 
 var keysShim;
