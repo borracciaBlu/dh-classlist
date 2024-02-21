@@ -1960,13 +1960,17 @@ module.exports = hasPropertyDescriptors;
 'use strict';
 
 var test = {
+	__proto__: null,
 	foo: {}
 };
 
 var $Object = Object;
 
+/** @type {import('.')} */
 module.exports = function hasProto() {
-	return { __proto__: test }.foo === test.foo && !({ __proto__: null } instanceof $Object);
+	// @ts-expect-error: TS errors on an inherited property for some reason
+	return { __proto__: test }.foo === test.foo
+		&& !(test instanceof $Object);
 };
 
 },{}],23:[function(require,module,exports){
