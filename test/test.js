@@ -1,14 +1,17 @@
+import {
+	addClass,
+	removeClass,
+	toggleClass,
+	addClassThunk,
+	removeClassThunk,
+	toggleClassThunk
+} from '../index.js';
+
+import { describe, it } from 'node:test';
+
+import assert from 'node:assert';
+
 describe('dh-classlist', function tests() {
-    var dh = require('../');
-
-    var addClass = dh.addClass;
-    var removeClass = dh.removeClass;
-    var toggleClass = dh.toggleClass;
-    var addClassThunk = dh.addClassThunk;
-    var removeClassThunk = dh.removeClassThunk;
-    var toggleClassThunk = dh.toggleClassThunk;
-
-    var assert = require('assert');
 
     var testNode = typeof document !== 'undefined' && document.body;
 

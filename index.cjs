@@ -74,7 +74,7 @@ function generateThunkClassListFn(action) {
  * @param NodeList | Node itmList
  * @param String[] | String clsList
  */
-export const addClass = generateClassListFn('add');
+var addClass = generateClassListFn('add');
 
 /**
  * Remove a css class to a Node
@@ -87,7 +87,7 @@ export const addClass = generateClassListFn('add');
  * @param NodeList | Node itmList
  * @param String[] | String clsList
  */
-export const removeClass = generateClassListFn('remove');
+var removeClass = generateClassListFn('remove');
 
 /**
  * Toggle a css class to a Node
@@ -100,7 +100,7 @@ export const removeClass = generateClassListFn('remove');
  * @param NodeList | Node itmList
  * @param String[] | String clsList
  */
-export const toggleClass = generateClassListFn('toggle');
+var toggleClass = generateClassListFn('toggle');
 
 /**
  * Thunk to add a css class to a Node
@@ -115,7 +115,7 @@ export const toggleClass = generateClassListFn('toggle');
  * @param String[] | String clsList
  * @return Function
  */
-export const addClassThunk = generateThunkClassListFn('add');
+var addClassThunk = generateThunkClassListFn('add');
 
 /**
  * Thunk to remove a css class to a Node
@@ -130,7 +130,7 @@ export const addClassThunk = generateThunkClassListFn('add');
  * @param String[] | String clsList
  * @return Function
  */
-export const removeClassThunk = generateThunkClassListFn('remove');
+var removeClassThunk = generateThunkClassListFn('remove');
 
 /**
  * Thunk to toggle a css class to a Node
@@ -145,4 +145,12 @@ export const removeClassThunk = generateThunkClassListFn('remove');
  * @param String[] | String clsList
  * @return Function
  */
-export const toggleClassThunk = generateThunkClassListFn('toggle');
+var toggleClassThunk = generateThunkClassListFn('toggle');
+
+module.exports.addClass = addClass;
+module.exports.removeClass = removeClass;
+module.exports.toggleClass = toggleClass;
+
+module.exports.addClassThunk = addClassThunk;
+module.exports.removeClassThunk = removeClassThunk;
+module.exports.toggleClassThunk = toggleClassThunk;
