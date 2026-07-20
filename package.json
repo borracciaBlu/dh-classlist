@@ -4,13 +4,16 @@
   "description": "Helpers functions to manipulate the DOM element css classes.",
   "main": "index.js",
   "types": "index.d.ts",
+  "type": "module",
+  "exports": {
+    "require": "./index.cjs",
+    "import": "./index.js"
+  },
   "scripts": {
     "lint": "eslint index.js",
     "x--------------------TEST------------------------x": "Code coverage and saucelab",
-    "test": "nyc --reporter=html --reporter=text mocha test/test.js",
-    "coveralls": "nyc npm test && nyc report --reporter=lcov",
-    "test-build": "browserify test/test.js -o test/test-browser.js",
-    "build-gh-pages": "node test/gh-test.js",
+    "test": "c8 --reporter=html --reporter=text node --test test/test.js",
+    "coveralls": "c8 npm test && c8 report --reporter=lcov",
     "x--------------------BUILD------------------------x": "create - minify - banner",
     "browserify": "rm -rf dist && mkdir dist && browserify index.js --standalone dhClasslist -o dist/dh-classlist.js",
     "minify": "uglifyjs dist/dh-classlist.js --source-map -cm -o dist/dh-classlist.min.js",
@@ -27,6 +30,7 @@
     "classList"
   ],
   "files": [
+    "index.cjs",
     "index.js",
     "index.d.ts",
     "dist"
@@ -40,13 +44,10 @@
   "devDependencies": {
     "@borracciablu/banner-cli": "^1.0.0",
     "@eslint/js": "^9.0.0",
-    "assert": "^2.0.0",
     "browserify": "^17.0.0",
+    "c8": "^12.0.0",
     "eslint": "^9.0.0",
-    "gh-pages": "^6.0.0",
     "globals": "^15.0.0",
-    "mocha": "^10.0.0",
-    "nyc": "^17.0.0",
     "uglify-js": "^3.12.7"
   }
 }
