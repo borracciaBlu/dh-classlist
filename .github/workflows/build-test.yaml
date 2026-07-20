@@ -18,7 +18,7 @@ jobs:
         os:
           - ubuntu-latest
         node_version:
-          - 20 
+          - 24
         architecture:
           - x64
     name: Node ${{ matrix.node_version }} - ${{ matrix.architecture }} on ${{ matrix.os }}
@@ -33,6 +33,6 @@ jobs:
       - run: npm test
       - run: npm run coveralls
       - name: Setup Coveralls
-        uses: coverallsapp/github-action@master
+        uses: coverallsapp/github-action@v2.3.7
         with:
           github-token: ${{ secrets.github_token }}
